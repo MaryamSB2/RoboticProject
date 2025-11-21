@@ -15,8 +15,8 @@ WorldInfo {
   title "Spot Robot demo"
 }
 Viewpoint {
-  orientation -0.24286731374859444 -0.07485435776243915 0.9671671484477306 3.721014167412084
-  position 4.631410456152899 5.9351127687374 4.888987269785218
+  orientation 0.04099613744427168 -0.027905691555505756 -0.9987695375277819 4.3356761991844515
+  position 1.053422502178661 -0.5861219361093251 1.329022052264677
   followType "None"
   followSmoothness 0
 }
@@ -123,21 +123,123 @@ Spot {
       ]
     }
   ]
-  middleExtension [
-    Speaker {
-      children [
-        Shape {
-          appearance PBRAppearance {
-          }
-          geometry Capsule {
-            height 0.1
-            radius 0.05
-          }
+  rearExtension [
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis -1 0 0
+        anchor 0.17 -0.68 0.07
+      }
+      device [
+        RotationalMotor {
+          name "wheel1"
         }
       ]
+      endPoint DEF WHEEL1 Solid {
+        translation 0.17 -0.68 0.07
+        rotation 0 1 0 1.5708
+        children [
+          DEF WHEEL Shape {
+            appearance PBRAppearance {
+            }
+            geometry Cylinder {
+              height 0.05
+              radius 0.05
+            }
+          }
+        ]
+        name "solid(1)"
+        boundingObject USE WHEEL
+        physics Physics {
+        }
+      }
     }
-  ]
-  rearExtension [
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis -1 0 0
+        anchor -0.17 -0.68 0.07
+      }
+      device [
+        RotationalMotor {
+          name "wheel2"
+        }
+      ]
+      endPoint DEF WHEEL1 Solid {
+        translation -0.17 -0.68 0.07
+        rotation 0 1 0 1.5708
+        children [
+          DEF WHEEL Shape {
+            appearance PBRAppearance {
+            }
+            geometry Cylinder {
+              height 0.05
+              radius 0.05
+            }
+          }
+        ]
+        name "Wheel2"
+        boundingObject USE WHEEL
+        physics Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis -1 0 0
+        anchor -0.17 -0.68 -0.6
+      }
+      device [
+        RotationalMotor {
+          name "wheel3"
+        }
+      ]
+      endPoint DEF WHEEL1 Solid {
+        translation -0.17000000535284604 -0.6800178430489071 -0.599912529091243
+        rotation 0.7071072811859472 1.3267905276071413e-06 0.7071062811855495 3.14159
+        children [
+          DEF WHEEL Shape {
+            appearance PBRAppearance {
+            }
+            geometry Cylinder {
+              height 0.05
+              radius 0.05
+            }
+          }
+        ]
+        name "Wheel3"
+        boundingObject USE WHEEL
+        physics Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis -1 0 0
+        anchor 0.17 -0.68 -0.6
+      }
+      device [
+        RotationalMotor {
+          name "wheel4"
+        }
+      ]
+      endPoint DEF WHEEL1 Solid {
+        translation 0.16999999463314372 -0.6800179059860766 -0.5999122151255272
+        rotation 0.7071072811859473 1.3267905276682114e-06 0.7071062811855495 3.1415900000000003
+        children [
+          DEF WHEEL Shape {
+            appearance PBRAppearance {
+            }
+            geometry Cylinder {
+              height 0.05
+              radius 0.05
+            }
+          }
+        ]
+        name "Wheel4"
+        boundingObject USE WHEEL
+        physics Physics {
+        }
+      }
+    }
     HingeJoint {
       jointParameters HingeJointParameters {
       }
@@ -224,7 +326,7 @@ Robot {
       ]
       endPoint Solid {
         translation 0.05 0.06 0
-        rotation 0.5773489358556706 0.5773509358554486 -0.5773509358554486 2.0943999999999985
+        rotation 0.5773489358556707 0.5773509358554487 -0.5773509358554487 2.0943999999999985
         children [
           DEF WHEEL Shape {
             appearance PBRAppearance {
