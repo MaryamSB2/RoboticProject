@@ -12,6 +12,8 @@ robot = Robot()
 #timestep = int(robot.getBasicTimeStep())
 time_step = int(robot.getBasicTimeStep())
 
+#output_given = FALSE
+
 #getting the device instances
 #3 distance sensors
 ds = [] #array for the 3 sensors
@@ -21,6 +23,13 @@ dsNames = ['ds_front',
 for i in range(3):
     ds.append(robot.getDevice(dsNames[i]))
     ds[i].enable(time_step)
+    
+wheels = []
+wheelsNames = ['wheel1', 'wheel2', 'wheel3', 'wheel4']
+for i in range(4):
+    wheels.append(robot.getDevice(wheelsNames[i]))
+    wheels[i].setPosition(float('inf'))
+    wheels[i].setVelocity(0.0)
    
 # ds = robot.getDevice('distance sensor')
 # ds.enable(timestep)
@@ -43,6 +52,8 @@ FR_ABD, FR_ROT, FR_ELB = 3, 4, 5
 RL_ABD, RL_ROT, RL_ELB = 6, 7, 8
 RR_ABD, RR_ROT, RR_ELB = 9, 10, 11
 
+#marking the matrix position
+
 
 keyboard = robot.getKeyboard()
 keyboard.enable(time_step)
@@ -61,30 +72,34 @@ STAND_POSTURE = [
     -0.1, 0.0, 0.0,   # RL
      0.1, 0.0, 0.0    # RR
 ]
+#setting position for each joint when idle
 
 
 def apply_posture(posture):
     for i in range(NUMBER_OF_JOINTS):
         motors[i].setPosition(posture[i])
+        #for each jpint set it the associated number in stand_posture
 
 
 def step():
     if robot.step(time_step) == -1:
         return False
     return True
+    #getting the timestep
 
 
-def set_gait(mode, t):
+def set_gait(mode, t): 
     
+    #assigning standing matrix to pos
     pos = STAND_POSTURE[:]
 
     if mode == "idle":
         apply_posture(pos)
         return
-
+        #if idle = set to the standing matrix again
     
     freq = 2.0  
-    phase = 2.0 * math.pi * freq * t
+    phase = 2.0 * math.pi * freq * t #phase = 
 
     
     A_shoulder = 0.35  
@@ -172,29 +187,26 @@ while step():
     t = robot.getTime()
     set_gait(current_mode, t)
     
+    speed = 3.0
+    for j in range(4):
+        wheels[j].setVelocity(speed)
+    
     dsValues = []
     for i in range(3):
         dsValues.append(ds[i].getValue()) 
         #note = lookup table changed so x = 1 rather than 0.1 to increase distance    
-   
-    j = 1   
+    
     if dsValues[0] < 250.0 or dsValues[1] < 250.0 or dsValues[2] <250.0:
-        # current_mode = "idle"
-        # set_gait(current_mode, t)
+        print("Immediate Obstacle Detected")
         for i in range(NUMBER_OF_JOINTS):
             motors[i].setVelocity(0.0) 
-        if j == 1:
-            j += 1
-            print("Immediate Obstacle")
-        # while dsValues[0] < 250.0:
-            # apply_posture(STAND_POSTURE)
     elif dsValues[0] < 950.0 or dsValues[1] < 950.0 or dsValues[2] < 950.0:    
        for i in range(NUMBER_OF_JOINTS):
             motors[i].setVelocity(1.5) 
     else:
         for i in range(NUMBER_OF_JOINTS):
             motors[i].setVelocity(motors[i].getMaxVelocity()) 
-        j = 1
+        
 
 
 #Main loop:
