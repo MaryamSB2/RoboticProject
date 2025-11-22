@@ -15,8 +15,8 @@ WorldInfo {
   title "Spot Robot demo"
 }
 Viewpoint {
-  orientation -0.23593502977192243 -0.2384918046223371 0.9420490013022161 4.663500955931503
-  position 0.44439341321290876 8.010503323047297 4.646204608726005
+  orientation -0.5693527178379089 -0.5698007563898217 0.5925914112676401 4.212196135225314
+  position -0.14203725125643318 0.05045134589681573 27.747380055423985
   followType "None"
   followSmoothness 0
 }
@@ -105,7 +105,6 @@ Robot {
       device [
         RotationalMotor {
           name "wheel1"
-          acceleration 2
         }
       ]
       endPoint Solid {
@@ -135,7 +134,6 @@ Robot {
       device [
         RotationalMotor {
           name "wheel3"
-          acceleration 2
         }
       ]
       endPoint Solid {
@@ -165,7 +163,6 @@ Robot {
       device [
         RotationalMotor {
           name "wheel2"
-          acceleration 2
         }
       ]
       endPoint Solid {
@@ -195,7 +192,6 @@ Robot {
       device [
         RotationalMotor {
           name "wheel4"
-          acceleration 2
         }
       ]
       endPoint Solid {
@@ -241,6 +237,9 @@ Solid {
       }
     }
   ]
+  boundingObject Box {
+    size 0.1 3 1.9
+  }
 }
 Solid {
   translation 1 -2.3 0
@@ -256,6 +255,9 @@ Solid {
     }
   ]
   name "solid(12)"
+  boundingObject Box {
+    size 0.1 5.45 1.9
+  }
 }
 Solid {
   translation -1 3.5 0
@@ -271,6 +273,9 @@ Solid {
     }
   ]
   name "solid(1)"
+  boundingObject Box {
+    size 0.1 3 1.9
+  }
 }
 Solid {
   translation -4.4 -1.01 0
@@ -286,6 +291,9 @@ Solid {
     }
   ]
   name "solid(9)"
+  boundingObject Box {
+    size 0.1 6.05 1.9
+  }
 }
 Solid {
   translation -1 -0.83 0
@@ -301,6 +309,9 @@ Solid {
     }
   ]
   name "solid(6)"
+  boundingObject Box {
+    size 0.1 2.5 1.9
+  }
 }
 Solid {
   translation -1 -4.52 0
@@ -316,6 +327,9 @@ Solid {
     }
   ]
   name "solid(8)"
+  boundingObject Box {
+    size 0.1 1 1.9
+  }
 }
 Solid {
   translation -2.57 -0.83 0
@@ -331,6 +345,9 @@ Solid {
     }
   ]
   name "solid(4)"
+  boundingObject Box {
+    size 0.1 0.125 1.9
+  }
 }
 Solid {
   translation -2.70319 2.05023 0
@@ -347,6 +364,9 @@ Solid {
     }
   ]
   name "solid(3)"
+  boundingObject Box {
+    size 0.1 3.5 1.9
+  }
 }
 Solid {
   translation -2.70319 -4.05977 0
@@ -363,6 +383,9 @@ Solid {
     }
   ]
   name "solid(7)"
+  boundingObject Box {
+    size 0.1 3.5 1.9
+  }
 }
 Solid {
   translation 2.65551 2.03967 -1.77636e-15
@@ -379,6 +402,9 @@ Solid {
     }
   ]
   name "solid(10)"
+  boundingObject Box {
+    size 0.1 3.25 1.9
+  }
 }
 Solid {
   translation 2.68208 0.367989 -5.32907e-15
@@ -395,6 +421,9 @@ Solid {
     }
   ]
   name "solid(11)"
+  boundingObject Box {
+    size 0.1 3.4 1.9
+  }
 }
 Solid {
   translation -1.77678 -2.03807 3.01981e-14
@@ -411,6 +440,9 @@ Solid {
     }
   ]
   name "solid(5)"
+  boundingObject Box {
+    size 0.1 1.5 1.9
+  }
 }
 Solid {
   translation -1.77678 0.37193 3.01981e-14
@@ -427,6 +459,9 @@ Solid {
     }
   ]
   name "solid(2)"
+  boundingObject Box {
+    size 0.1 1.5 1.9
+  }
 }
 Spot {
   translation 0 4.12485 0.624

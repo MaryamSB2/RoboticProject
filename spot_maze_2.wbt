@@ -16,7 +16,7 @@ WorldInfo {
 }
 Viewpoint {
   orientation -0.5361460612113802 -0.5053028667709754 0.6761777975359414 4.276358746934118
-  position 0.5167262657980016 3.1945690831228992 14.700998626875224
+  position 0.5828905445350587 4.310933909665984 19.477294832249854
   followType "None"
   followSmoothness 0
 }
@@ -56,6 +56,9 @@ Solid {
       }
     }
   ]
+  boundingObject Box {
+    size 0.1 5 1.9
+  }
 }
 Solid {
   translation 1 -3.3 0
@@ -71,6 +74,9 @@ Solid {
     }
   ]
   name "solid(12)"
+  boundingObject Box {
+    size 0.1 3.5 1.9
+  }
 }
 Solid {
   translation -1 3.5 0
@@ -86,6 +92,9 @@ Solid {
     }
   ]
   name "solid(1)"
+  boundingObject Box {
+    size 0.1 3 1.9
+  }
 }
 Solid {
   translation -4.4 -1.01 0
@@ -101,6 +110,9 @@ Solid {
     }
   ]
   name "solid(9)"
+  boundingObject Box {
+    size 0.1 6.05 1.9
+  }
 }
 Solid {
   translation -1 -0.83 0
@@ -116,6 +128,9 @@ Solid {
     }
   ]
   name "solid(6)"
+  boundingObject Box {
+    size 0.1 2.5 1.9
+  }
 }
 Solid {
   translation -1 -4.52 0
@@ -131,6 +146,9 @@ Solid {
     }
   ]
   name "solid(8)"
+  boundingObject Box {
+    size 0.1 1 1.9
+  }
 }
 Solid {
   translation -2.57 -0.83 0
@@ -146,6 +164,9 @@ Solid {
     }
   ]
   name "solid(4)"
+  boundingObject Box {
+    size 0.1 2.5 1.9
+  }
 }
 Solid {
   translation -2.70319 2.05023 0
@@ -162,6 +183,9 @@ Solid {
     }
   ]
   name "solid(3)"
+  boundingObject Box {
+    size 0.1 3.5 1.9
+  }
 }
 Solid {
   translation -2.70319 -4.05977 0
@@ -178,6 +202,9 @@ Solid {
     }
   ]
   name "solid(7)"
+  boundingObject Box {
+    size 0.1 3.5 1.9
+  }
 }
 Solid {
   translation 1.95208 0.0179851 -5.32907e-15
@@ -194,6 +221,9 @@ Solid {
     }
   ]
   name "solid(10)"
+  boundingObject Box {
+    size 0.1 2 1.9
+  }
 }
 Solid {
   translation 2.90355 -0.732027 -9.23706e-14
@@ -210,6 +240,9 @@ Solid {
     }
   ]
   name "solid(13)"
+  boundingObject Box {
+    size 0.1 1.5 1.9
+  }
 }
 Solid {
   translation 1.94208 -1.54201 -5.32907e-15
@@ -226,6 +259,9 @@ Solid {
     }
   ]
   name "solid(11)"
+  boundingObject Box {
+    size 0.1 2 1.9
+  }
 }
 Solid {
   translation -1.77678 -2.03807 3.01981e-14
@@ -242,6 +278,9 @@ Solid {
     }
   ]
   name "solid(5)"
+  boundingObject Box {
+    size 0.1 1.5 1.9
+  }
 }
 Solid {
   translation -1.77678 0.37193 3.01981e-14
@@ -258,6 +297,9 @@ Solid {
     }
   ]
   name "solid(2)"
+  boundingObject Box {
+    size 0.1 1.5 1.9
+  }
 }
 Spot {
   translation 0 4.12485 0.624

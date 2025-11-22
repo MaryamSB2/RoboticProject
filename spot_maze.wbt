@@ -15,8 +15,8 @@ WorldInfo {
   title "Spot Robot demo"
 }
 Viewpoint {
-  orientation 0.5804344038608674 0.5769460874816464 -0.5746556490232214 2.1036370933131954
-  position -0.6217175842946601 -0.01592763752064652 27.778276972020837
+  orientation 0.5404110654559864 0.5371629663768334 -0.6476201262205851 1.9976810327147114
+  position -0.6046627250539826 2.80863329538277 14.941783348821632
   followType "None"
   followSmoothness 0
 }
@@ -56,6 +56,9 @@ Solid {
       }
     }
   ]
+  boundingObject Box {
+    size 0.1 10 1.9
+  }
 }
 Solid {
   translation -1 3.5 0
@@ -71,6 +74,9 @@ Solid {
     }
   ]
   name "solid(1)"
+  boundingObject Box {
+    size 0.1 3 1.9
+  }
 }
 Solid {
   translation -4.4 -1.01 0
@@ -86,6 +92,9 @@ Solid {
     }
   ]
   name "solid(9)"
+  boundingObject Box {
+    size 0.1 6.05 1.9
+  }
 }
 Solid {
   translation -1 -0.83 0
@@ -101,6 +110,9 @@ Solid {
     }
   ]
   name "solid(6)"
+  boundingObject Box {
+    size 0.1 2.5 1.9
+  }
 }
 Solid {
   translation -1 -4.52 0
@@ -116,6 +128,9 @@ Solid {
     }
   ]
   name "solid(8)"
+  boundingObject Box {
+    size 0.1 1 1.9
+  }
 }
 Solid {
   translation -2.57 -0.83 0
@@ -131,6 +146,9 @@ Solid {
     }
   ]
   name "solid(4)"
+  boundingObject Box {
+    size 0.1 2.5 1.9
+  }
 }
 Solid {
   translation -2.70319 2.05023 0
@@ -147,6 +165,9 @@ Solid {
     }
   ]
   name "solid(3)"
+  boundingObject Box {
+    size 0.1 3.5 1.9
+  }
 }
 Solid {
   translation -2.70319 -4.05977 0
@@ -163,6 +184,9 @@ Solid {
     }
   ]
   name "solid(7)"
+  boundingObject Box {
+    size 0.1 3.5 1.9
+  }
 }
 Solid {
   translation -1.77678 -2.03807 3.01981e-14
@@ -179,6 +203,9 @@ Solid {
     }
   ]
   name "solid(5)"
+  boundingObject Box {
+    size 0.1 1.5 1.9
+  }
 }
 Solid {
   translation -1.77678 0.37193 3.01981e-14
@@ -195,10 +222,71 @@ Solid {
     }
   ]
   name "solid(2)"
+  boundingObject Box {
+    size 0.1 1.5 1.9
+  }
 }
 Spot {
-  translation 0 4.12485 0.624
-  rotation 0 0 1 -1.5707953071795862
+  hidden position_0_0 4.698593268787462e-06
+  hidden position_0_1 4.978392956639554e-06
+  hidden position_0_2 -1.4947216928710712e-05
+  hidden position_0_3 -1.5283047259096544e-05
+  hidden linearVelocity_0 3.6867846258987234e-05 -0.5005286761373345 -0.00020926347928194354
+  hidden angularVelocity_0 0.0007647567337196209 -1.055461473206412e-05 3.295139583024966e-05
+  hidden rotation_18 0 0 1 4.698570293193076e-06
+  hidden position_18_0 -6.795584847695373e-06
+  hidden linearVelocity_18 4.098874449888377e-05 -0.5005130744731915 -0.0004596092689290788
+  hidden angularVelocity_18 0.00077004673106623 -1.1210649438389835e-05 3.3668445276912026e-05
+  hidden rotation_19 -1 0 0 6.795583032671497e-06
+  hidden position_19_1 3.6156999530833566e-06
+  hidden linearVelocity_19 3.200007661644198e-05 -0.5004088076771099 -0.00038944498831568794
+  hidden angularVelocity_19 0.0007325732888536674 -7.799497649913365e-06 3.437744920183777e-05
+  hidden rotation_21 0.9999999999999999 0 0 3.615673956480272e-06
+  hidden linearVelocity_21 2.767836391385309e-05 -0.5001639716371806 -0.00039287470131242055
+  hidden angularVelocity_21 0.0007051890516462813 -5.6269860442216984e-06 3.2774503644545755e-05
+  hidden rotation_22 0 0 1 4.9784152902047844e-06
+  hidden position_22_0 -5.260884480810537e-06
+  hidden linearVelocity_22 5.2751810386803754e-05 -0.5005152197749244 -0.00046078333820481537
+  hidden angularVelocity_22 0.0007699132141776794 6.176378751826306e-05 3.2057103931953425e-05
+  hidden rotation_23 -1 0 0 5.260848575685444e-06
+  hidden position_23_1 3.487223175360989e-06
+  hidden linearVelocity_23 4.753531105896655e-05 -0.5004187950232623 -0.00038363955767364296
+  hidden angularVelocity_23 0.0007451907456097421 5.9875989004920845e-05 3.12590648174971e-05
+  hidden rotation_25 1 0 0 3.487253779485685e-06
+  hidden linearVelocity_25 3.363815805611842e-05 -0.5001700743415411 -0.00038736386087330526
+  hidden angularVelocity_25 0.0007155466294848709 5.844634059728743e-05 3.230284668999961e-05
+  hidden rotation_26 0 0 -0.9999999999999999 1.4947223993764429e-05
+  hidden position_26_0 -9.391986865185518e-06
+  hidden linearVelocity_26 1.2095636142014342e-05 -0.5005217172014825 4.4273706386525887e-05
+  hidden angularVelocity_26 0.0007646129853008742 -0.00011061021020086469 3.245077126707577e-05
+  hidden rotation_27 -1 0 0 9.391988061783301e-06
+  hidden position_27_1 -5.1465500974298384e-06
+  hidden linearVelocity_27 8.308364261321616e-06 -0.5004231959575722 0.00011828026177748973
+  hidden angularVelocity_27 0.0007648253063083392 -0.00010184372143534111 3.1805900545925846e-05
+  hidden rotation_29 -1 0 0 5.146577195798364e-06
+  hidden linearVelocity_29 2.747322981299882e-05 -0.5001785228662072 0.00010509375555893796
+  hidden angularVelocity_29 0.0007273075045799279 -9.759762030422055e-05 2.8672272019282044e-05
+  hidden rotation_30 0 0 -1 1.5283042382229924e-05
+  hidden position_30_0 1.0187246334684487e-05
+  hidden linearVelocity_30 1.3735602969257045e-05 -0.5005232891414336 4.360199720812054e-05
+  hidden angularVelocity_30 0.0007648317814757479 -9.998636222805483e-05 3.2534886448968175e-05
+  hidden rotation_31 1 0 0 1.0187251622911119e-05
+  hidden position_31_1 5.083087255543899e-06
+  hidden linearVelocity_31 1.0011845548716469e-05 -0.5004341744970217 9.473144177061407e-05
+  hidden angularVelocity_31 0.0007580905703040711 -9.224097017755704e-05 3.198944439288626e-05
+  hidden rotation_33 1 0 0 5.083109128034755e-06
+  hidden linearVelocity_33 2.7632623900241968e-05 -0.5001906212224346 8.24974987736739e-05
+  hidden angularVelocity_33 0.0007239444110665006 -8.845186371379234e-05 2.9192301795410983e-05
+  hidden linearVelocity_37 4.521083304713989e-05 -0.5000840010842126 1.1687631814949898e-05
+  hidden angularVelocity_37 10.000769125931697 0.0017957116812162633 0.0006843543243568373
+  hidden linearVelocity_38 4.5209430430104855e-05 -0.5000774957700266 1.5252505258781393e-05
+  hidden angularVelocity_38 10.000768478636813 0.001795711558051853 0.0006843542856440875
+  hidden linearVelocity_39 5.80633779318258e-05 -0.4998723449659376 0.0004323349377148375
+  hidden angularVelocity_39 10.000748099865934 0.0017968786417823827 0.0006838853192193309
+  hidden linearVelocity_40 5.8064573489614784e-05 -0.4998781478373196 0.0004320706197188732
+  hidden angularVelocity_40 10.000748677894954 0.0017968787479940523 0.0006838853521207908
+  translation 0.00012100164154892026 2.8731113854200045 0.6133129865596786
+  rotation -0.000609992280896681 -0.0006856013751987847 -0.9999995789299971 1.5706182001411773
   controller "object_detection"
   supervisor TRUE
   frontExtension [
@@ -261,6 +349,7 @@ Spot {
   rearExtension [
     HingeJoint {
       jointParameters HingeJointParameters {
+        position 25.38483012458535
         axis -1 0 0
         anchor 0.17 -0.68 0.07
       }
@@ -271,7 +360,7 @@ Spot {
       ]
       endPoint DEF WHEEL1 Solid {
         translation 0.17 -0.68 0.07
-        rotation 0 1 0 1.5708
+        rotation -0.12472881263221178 0.9843197307319209 -0.12472927078756431 1.5866038467369175
         children [
           DEF WHEEL Shape {
             appearance PBRAppearance {
@@ -290,6 +379,7 @@ Spot {
     }
     HingeJoint {
       jointParameters HingeJointParameters {
+        position 25.384829787065573
         axis -1 0 0
         anchor -0.17 -0.68 0.07
       }
@@ -300,7 +390,7 @@ Spot {
       ]
       endPoint DEF WHEEL1 Solid {
         translation -0.17 -0.68 0.07
-        rotation 0 1 0 1.5708
+        rotation -0.12472864910339485 0.9843197721753982 -0.1247291072581467 1.5866038046385043
         children [
           DEF WHEEL Shape {
             appearance PBRAppearance {
@@ -319,6 +409,7 @@ Spot {
     }
     HingeJoint {
       jointParameters HingeJointParameters {
+        position 25.38482921848214
         axis -1 0 0
         anchor -0.17 -0.68 -0.6
       }
@@ -328,8 +419,8 @@ Spot {
         }
       ]
       endPoint DEF WHEEL1 Solid {
-        translation -0.17000000535284604 -0.6800178430489071 -0.599912529091243
-        rotation 0.7071072811859472 1.3267905276071413e-06 0.7071062811855495 3.14159
+        translation -0.17000000535284604 -0.6799954615343187 -0.5999108431909368
+        rotation 0.7042856940264699 0.08924530984405797 0.7042846980167125 2.9635734079480054
         children [
           DEF WHEEL Shape {
             appearance PBRAppearance {
@@ -348,6 +439,7 @@ Spot {
     }
     HingeJoint {
       jointParameters HingeJointParameters {
+        position 25.384829864188077
         axis -1 0 0
         anchor 0.17 -0.68 -0.6
       }
@@ -357,8 +449,8 @@ Spot {
         }
       ]
       endPoint DEF WHEEL1 Solid {
-        translation 0.16999999463314372 -0.6800179059860766 -0.5999122151255272
-        rotation 0.7071072811859473 1.3267905276682114e-06 0.7071062811855495 3.1415900000000003
+        translation 0.16999999463314372 -0.6799954441131347 -0.5999105234532491
+        rotation 0.7042856795051498 0.08924553903549384 0.7042846834954125 2.9635729531865556
         children [
           DEF WHEEL Shape {
             appearance PBRAppearance {
