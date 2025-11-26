@@ -42,7 +42,7 @@ def step():
 GOAL_X = -0.0107175
 GOAL_Y = -3.98578
 
-GOAL_THRESHOLD = 0.20  # meters: must get within 20 cm of goal
+GOAL_THRESHOLD = 0.20  
 
 
 # ========== Low-level motion ==========
@@ -61,10 +61,7 @@ def stop():
 
 
 def go_to_goal(robot_pos, yaw):
-    """
-    Turn and move toward (GOAL_X, GOAL_Y) using GPS directly.
-    We work in the X–Y plane (Z is basically 0 in this world).
-    """
+
     x, y, z = robot_pos
 
     dx = GOAL_X - x
@@ -87,7 +84,7 @@ def go_to_goal(robot_pos, yaw):
     K_v = 4.0
 
     omega = K_omega * angle_error
-    v = K_v * max(0.0, math.cos(angle_error))  # slow forward when turning a lot
+    v = K_v * max(0.0, math.cos(angle_error)) 
 
     # slow/stop when very close to goal
     if dist < GOAL_THRESHOLD:
