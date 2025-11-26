@@ -1,0 +1,169 @@
+"""object_detection + GPS-based navigation controller."""
+
+from controller import Robot, DistanceSensor, Motor, GPS, InertialUnit
+import math
+
+# ========== Robot and devices ==========
+robot = Robot()
+time_step = int(robot.getBasicTimeStep())
+
+# GPS
+gps = robot.getDevice('gps')
+gps.enable(time_step)
+
+# Inertial Unit (for heading)
+imu = robot.getDevice('inertial unit')
+imu.enable(time_step)
+
+# 3 distance sensors
+ds = []
+dsNames = ['ds_front', 'ds_right', 'ds_left']
+for name in dsNames:
+    s = robot.getDevice(name)
+    s.enable(time_step)
+    ds.append(s)
+
+# Wheels
+wheels = []
+wheelsNames = ['wheel1', 'wheel2', 'wheel3', 'wheel4']
+for name in wheelsNames:
+    m = robot.getDevice(name)
+    m.setPosition(float('inf'))  # velocity control
+    m.setVelocity(0.0)
+    wheels.append(m)
+
+
+def step():
+    return robot.step(time_step) != -1
+
+
+# ========== Goal in WORLD coordinates ==========
+# Use the RoCKIn box translation (x, y) from Webots
+GOAL_X = -0.0107175
+GOAL_Y = -3.98578
+
+GOAL_THRESHOLD = 0.20  # meters: must get within 20 cm of goal
+
+
+# ========== Low-level motion ==========
+def set_all_wheels(v_left, v_right):
+    """Set left and right wheel speeds."""
+    # left side: wheels[0], wheels[2]
+    wheels[0].setVelocity(v_left)
+    wheels[2].setVelocity(v_left)
+    # right side: wheels[1], wheels[3]
+    wheels[1].setVelocity(v_right)
+    wheels[3].setVelocity(v_right)
+
+
+def stop():
+    set_all_wheels(0.0, 0.0)
+
+
+def go_to_goal(robot_pos, yaw):
+    """
+    Turn and move toward (GOAL_X, GOAL_Y) using GPS directly.
+    We work in the X–Y plane (Z is basically 0 in this world).
+    """
+    x, y, z = robot_pos
+
+    dx = GOAL_X - x
+    dy = GOAL_Y - y
+
+    # Desired yaw in the X–Y plane
+    desired_yaw = math.atan2(dy, dx)
+
+    # angle error in [-pi, pi]
+    angle_error = desired_yaw - yaw
+    while angle_error > math.pi:
+        angle_error -= 2.0 * math.pi
+    while angle_error < -math.pi:
+        angle_error += 2.0 * math.pi
+
+    dist = math.hypot(dx, dy)
+
+    # gains
+    K_omega = 3.0
+    K_v = 4.0
+
+    omega = K_omega * angle_error
+    v = K_v * max(0.0, math.cos(angle_error))  # slow forward when turning a lot
+
+    # slow/stop when very close to goal
+    if dist < GOAL_THRESHOLD:
+        v = 0.0
+        omega = 0.0
+
+    # differential drive
+    WHEEL_TRACK = 0.6
+    v_left  = v - (omega * WHEEL_TRACK / 2.0)
+    v_right = v + (omega * WHEEL_TRACK / 2.0)
+
+    # saturate
+    max_v = wheels[0].getMaxVelocity()
+    v_left  = max(-max_v, min(max_v, v_left))
+    v_right = max(-max_v, min(max_v, v_right))
+
+    set_all_wheels(v_left, v_right)
+
+
+# ========== Obstacle avoidance ==========
+IMMEDIATE_OBS = 350.0  # very close obstacle (raw sensor value)
+
+
+# ========== Main loop ==========
+while step():
+    # --- Read GPS ---
+    pos = gps.getValues()
+    x, y, z = pos[0], pos[1], pos[2]
+
+    # GPS ready check
+    if math.isnan(x) or math.isnan(y):
+        print("GPS not ready")
+        continue
+
+    # --- Read IMU ---
+    roll, pitch, yaw = imu.getRollPitchYaw()
+
+    # Debug prints
+    print(f"Robot world position: x={x:.7f}, y={y:.7f}")
+    print(f"Robot heading (yaw): {yaw:.4f}")
+
+    # --- Goal reached check in X–Y plane ---
+    dist_to_goal = math.hypot(x - GOAL_X, y - GOAL_Y)
+    print(f"Distance to goal: {dist_to_goal:.7f} m")
+
+    if dist_to_goal < GOAL_THRESHOLD:
+        print("GOAL REACHED! distance:", round(dist_to_goal, 7))
+        stop()
+        break
+
+    # --- Read distance sensors ---
+    dsValues = []
+    for i in range(3):
+        dsValues.append(ds[i].getValue()) 
+        #note = lookup table changed so x = 1 rather than 0.1 to increase distance    
+    print(dsValues[0])
+    if dsValues[0] < 350.0 or dsValues[1] < 350.0 or dsValues[2] <350.0:
+        for i in range(4):
+            stop()
+        if obstacle_output == False:
+            print("Immediate Obstacle Detected")
+            obstacle_output = True
+    elif dsValues[0] < 500.0 or dsValues[1] < 500.0 or dsValues[2] < 500.0:    
+       for i in range(4):
+            wheels[i].setVelocity(2) 
+    elif dsValues[0] < 950.0 or dsValues[1] < 950.0 or dsValues[2] < 950.0:    
+       for i in range(4):
+            wheels[i].setVelocity(5) 
+    else:
+        for i in range(4):
+            wheels[i].setVelocity(wheels[i].getMaxVelocity()) 
+        obstacle_output = False
+
+    # Otherwise, go straight toward the goal
+    go_to_goal((x, y, z), yaw)
+
+# End of simulation
+stop()
+print("Controller finished.")
