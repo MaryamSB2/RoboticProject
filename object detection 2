@@ -144,7 +144,7 @@ while step():
 
     # Very simple obstacle behaviour:
     if d_front < IMMEDIATE_OBS:
-        print("Immediate obstacle ahead")
+        print("Immediate obstacle detected")
         max_v = wheels[0].getMaxVelocity()
         set_all_wheels(-0.3 * max_v, 0.3 * max_v)  # turn left in place
         continue
