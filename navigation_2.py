@@ -43,9 +43,9 @@ def grid_to_world(i, j):
     return x, y
 
 # ========== Goal ==========
-GOAL_X = -4.91442
-GOAL_Y = -3.14033
-GOAL_THRESHOLD = 0.50
+GOAL_X = -0.061869
+GOAL_Y = -0.462078
+GOAL_THRESHOLD = 0.30
 
 # ========== Motion ==========
 def set_all_wheels(v_left, v_right):
@@ -74,7 +74,6 @@ def go_to_goal(robot_pos, yaw, target_x, target_y):
     v_left  = max(-max_v, min(max_v, v_left))
     v_right = max(-max_v, min(max_v, v_right))
     
-    print(angle_error)
     if angle_error < 0:
         wheels[1].setVelocity(10); wheels[2].setVelocity(10)
         wheels[0].setVelocity(-10); wheels[3].setVelocity(-10)
@@ -84,9 +83,6 @@ def go_to_goal(robot_pos, yaw, target_x, target_y):
     else:
         set_all_wheels(v_left, v_right)
     return dist
-     #maybe try setting to desired yaw instead of angle error
-    # set_all_wheels(v_left, v_right)
-    # return dist
 
 # ========== A* ==========
 def astar(start, goal, grid):
