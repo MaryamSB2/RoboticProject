@@ -1,5 +1,5 @@
-#Intelligent Robotics - Group 8
-##Members: Maryam Bahamadan and Jaya Sharma
+# Intelligent Robotics - Group 8
+## Members: Maryam Bahamadan and Jaya Sharma
 
 Aim: Develop a robot guide dog for navigation and object detection
 
