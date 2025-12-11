@@ -1,8 +1,10 @@
-from controller import Robot, DistanceSensor, Motor, GPS, InertialUnit
+from controller import Robot, DistanceSensor, Motor, GPS, InertialUnit, Speaker
 import math
 
 robot = Robot()
 time_step = int(robot.getBasicTimeStep())
+
+speaker = robot.getDevice("speaker")
 
 ds = []
 dsNames = ['ds_front', 'ds_right', 'ds_left', 'ds_right_side', 'ds_left_side'] 
@@ -90,18 +92,18 @@ while step():
     heading_error = normalize_angle(goal_angle - robot_angle)
 
     ang_gain = 3.0
-    lin_gain = 4.0
+    lin_gain = 6.0
 
     if distance < GOAL_TOL:
         set_wheel_speeds(0.0, 0.0)
         print("Goal reached")
+        speaker.speak("Goal reached", 1.0)
         break
 
     v = lin_gain * distance             
-    v = min(v, 0.6 * MAX_SPEED)         
+    v = min(v, 0.4 * MAX_SPEED)         
 
     t = ang_gain * heading_error          
-
     
     left_speed  = v - t
     right_speed = v + t
@@ -115,7 +117,8 @@ while step():
     if close_obstacle:
         set_wheel_speeds(-0.5 * MAX_SPEED, 0.5 * MAX_SPEED)
         if not obstacle_output:
-            print("Immediate Obstacle Detected")
+            print("Obstacle Detected")
+            speaker.speak("obstacle detected", 1.0)
             obstacle_output = True
     elif mid_obstacle:
         set_wheel_speeds(0.5 * left_speed, 0.5 * right_speed)
