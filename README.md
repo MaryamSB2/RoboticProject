@@ -9,3 +9,5 @@ Files provided:
 - spot_maze.wbt: World file used to test the robot's navigation abilities
 - spot_complex_maze.wbt: The world file for the complex maze used to test the robot's navigational abilities
 - spot_maze_with_moving_objects.wbt: World file used to test the robot's ability to navigate through moving objects
+
+[Note: all code in Final.py and car_controller.py were implemented by the group members. No pre-programmed packages were used.]
