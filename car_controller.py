@@ -1,5 +1,5 @@
 """car_controller controller."""
-
+#controller for the dynamic obstacles (yellow gates) used in testing. Moves the gates back and forth.
 # You may need to import some classes of the controller module. Ex:
 #  from controller import Robot, Motor, DistanceSensor
 from controller import Robot
@@ -10,42 +10,32 @@ robot = Robot()
 # get the time step of the current world.
 timestep = int(robot.getBasicTimeStep())
 
-# You should insert a getDevice-like function in order to get the
-# instance of a device of the robot. Something like:
-#  motor = robot.getDevice('motorname')
-#  ds = robot.getDevice('dsname')
-#  ds.enable(timestep)
+# Get device instances------------------
+#wheels
 wheels = []
 wheelsNames = ['wheel1', 'wheel2', 'wheel3', 'wheel4']
 for i in range(4):
     wheels.append(robot.getDevice(wheelsNames[i]))
     wheels[i].setPosition(float('inf'))
     wheels[i].setVelocity(0.0)
-    
+#distance sensors
 ds = []
 dsNames = ['ds_left', 'ds_right']
 for i in range(2):
     ds.append(robot.getDevice(dsNames[i]))
     ds[i].enable(timestep)
-    
+
+#set wheel speeds------------------------------
 speed = 10.0
 for i in range(4):
     wheels[i].setVelocity(speed)
 
 # Main loop:
-# - perform simulation steps until Webots is stopping the controller
 while robot.step(timestep) != -1:
     # Read the sensors:
-    # Enter here functions to read sensor data, like:
-    #  val = ds.getValue()
-
-    # #Enter here functions to send actuator commands, like:
-     # #motor.setPosition(10.0)
-    if ds[0].getValue() < 1000: #left sensor (towards me)
+    if ds[0].getValue() < 1000: #if obstacle detected by left sensor
         for i in range(4):
-            wheels[i].setVelocity(-10)
-    elif ds[1].getValue() < 1000: # right sensor (away from me)
+            wheels[i].setVelocity(-10) #reverse the direction of the wheels
+    elif ds[1].getValue() < 1000: # if the obstacle is detected by the right sensor (away from me)
         for i in range(4):
-            wheels[i].setVelocity(10)
-
-# Enter here exit cleanup code.
+            wheels[i].setVelocity(10) #make the wheels go forwaes at a speed of 10
